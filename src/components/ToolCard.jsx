@@ -8,9 +8,10 @@ export default function ToolCard({
   description,
   icon,
   tags = [],
-  isNew = false,
-  usageCount = 0,
-  onAction
+  rank,
+  upvotes,
+  onAction,
+  onUpvote
 }) {
   const { showToast } = useToast();
   const { trackEvent } = useAnalytics();
@@ -23,11 +24,17 @@ export default function ToolCard({
     trackEvent('tool_shared', { toolName: title });
   };
 
+  const handleUpvote = (e) => {
+    e.stopPropagation();
+    onUpvote();
+    trackEvent('tool_upvoted', { toolName: title });
+  };
+
   return (
     <div className="tool-card" onClick={onAction}>
+      <div className="rank-badge">#{rank}</div>
+      
       <div className="tool-card-content">
-        {isNew && <span className="new-badge">New ✨</span>}
-        
         <div className="tool-header">
           <span className="tool-icon">{icon}</span>
           <button className="share-button" onClick={handleShare}>
@@ -47,9 +54,9 @@ export default function ToolCard({
         </div>
 
         <div className="card-footer">
-          <span className="usage-count">
-            🔥 {usageCount.toLocaleString()} uses
-          </span>
+          <button className="upvote-button" onClick={handleUpvote}>
+            ⬆️ {upvotes.toLocaleString()}
+          </button>
           <span className="try-it">Try it</span>
         </div>
       </div>

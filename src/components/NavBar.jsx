@@ -1,34 +1,52 @@
-import React, { useState } from 'react';
-import './NavBarStyles.scss';
-import { useTheme } from '../theme/ThemeContext';
+import React from 'react';
+import './NavBar.scss';
+import { useAnalytics } from '../analytics/AnalyticsContext';
+import { useToast } from '../components/ToastContext';
 
 export default function NavBar() {
-  const { isDarkMode, toggleTheme } = useTheme();
-  const [navOpen, setNavOpen] = useState(false);
+  const { trackEvent } = useAnalytics();
+  const { showToast } = useToast();
 
-  const handleMenuToggle = () => setNavOpen(!navOpen);
+  const handleShare = (platform) => {
+    const shareText = "🚀 Check out SocialPlug Labs - Free AI tools for content creators!";
+    const shareUrl = "https://socialplug-labs.netlify.app";
+
+    const shareLinks = {
+      twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`,
+      facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`,
+      linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`,
+    };
+
+    if (shareLinks[platform]) {
+      window.open(shareLinks[platform], '_blank');
+      trackEvent('social_share', { platform });
+    } else {
+      navigator.clipboard.writeText(`${shareText} ${shareUrl}`);
+      showToast('Link copied to clipboard! 🔗');
+      trackEvent('social_share', { platform: 'copy' });
+    }
+  };
 
   return (
-    <header className="navbar-container">
-      <div className="navbar-brand">
-        <span className="brand-name">SocialPlug Labs</span>
+    <nav className="navbar">
+      <div className="navbar-content">
+        <h1 className="site-logo">⚡ SocialPlug Labs</h1>
+        
+        <div className="social-links">
+          <button onClick={() => handleShare('twitter')} className="social-button">
+            𝕏 Twitter
+          </button>
+          <button onClick={() => handleShare('facebook')} className="social-button">
+            📘 Facebook
+          </button>
+          <button onClick={() => handleShare('linkedin')} className="social-button">
+            💼 LinkedIn
+          </button>
+          <button onClick={() => handleShare('copy')} className="social-button">
+            📋 Copy Link
+          </button>
+        </div>
       </div>
-
-      <nav className={`navbar-links ${navOpen ? 'open' : ''}`}>
-        <a href="#hero">Home</a>
-        <a href="#tools">Tools</a>
-        <a href="#contact">Contact</a>
-
-        <button className="theme-toggle" onClick={toggleTheme}>
-          {isDarkMode ? 'Light Mode' : 'Dark Mode'}
-        </button>
-      </nav>
-
-      <button className="hamburger-button" onClick={handleMenuToggle}>
-        <span className="bar" />
-        <span className="bar" />
-        <span className="bar" />
-      </button>
-    </header>
+    </nav>
   );
 }

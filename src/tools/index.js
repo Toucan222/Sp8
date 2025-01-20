@@ -14,8 +14,7 @@ export const tools = [
       { name: 'Viral', icon: '🚀' },
       { name: 'AI', icon: '🤖' }
     ],
-    isNew: true,
-    usageCount: 1234
+    upvotes: 1234
   },
   {
     id: 2,
@@ -27,7 +26,7 @@ export const tools = [
       { name: 'Demo', icon: '🔍' },
       { name: 'AI', icon: '🤖' }
     ],
-    usageCount: 856
+    upvotes: 856
   },
   {
     id: 3,
@@ -39,6 +38,7 @@ export const tools = [
       { name: 'AI', icon: '🤖' },
       { name: 'Text', icon: '📝' }
     ],
-    usageCount: 2341
+    upvotes: 2341
   }
-]
+].sort((a, b) => b.upvotes - a.upvotes)
+ .map((tool, index) => ({ ...tool, rank: index + 1 }));
