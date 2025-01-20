@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './MobileLayoutStyles.scss';
 import CoolCard from '../tools/CoolCard';
 import { tools } from '../tools';
 import { useAnalytics } from '../analytics/AnalyticsContext';
 
-export default function MobileLayout() {
+export default function MobileLayout({ onToolSelect }) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [touchStart, setTouchStart] = useState(null);
   const { trackEvent } = useAnalytics();
 
   const goNext = () => {
@@ -18,19 +19,43 @@ export default function MobileLayout() {
     setActiveIndex((prev) => (prev - 1 + tools.length) % tools.length);
   };
 
+  // Touch handlers for swipe
+  const handleTouchStart = (e) => {
+    setTouchStart(e.touches[0].clientX);
+  };
+
+  const handleTouchEnd = (e) => {
+    if (!touchStart) return;
+
+    const touchEnd = e.changedTouches[0].clientX;
+    const diff = touchStart - touchEnd;
+
+    // Require at least 50px swipe
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) {
+        goNext();
+      } else {
+        goPrev();
+      }
+    }
+    setTouchStart(null);
+  };
+
   const currentTool = tools[activeIndex];
 
   return (
     <div className="mobile-layout-container">
-      <div className="card-wrapper">
+      <div 
+        className="card-wrapper"
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+      >
         <CoolCard
           key={currentTool.id}
           title={currentTool.title}
           description={currentTool.description}
           icon={currentTool.icon}
-          onAction={() => {
-            trackEvent('tool_selected_mobile', { toolId: currentTool.id });
-          }}
+          onAction={() => onToolSelect(currentTool.id)}
         />
       </div>
 
