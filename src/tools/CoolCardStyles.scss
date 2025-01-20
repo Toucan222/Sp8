@@ -72,7 +72,7 @@
       
       &:not(.share-button) {
         background: $color-primary;
-        color: white;
+        color: $color-text-dark;
         
         &:hover {
           background: darken($color-primary, 5%);

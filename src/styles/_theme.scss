@@ -1,8 +1,8 @@
 /* Base colors */
 $color-primary: #7C7FEA;    /* Soft purple */
-$color-accent: #FFB6C1;     /* Soft pink */
-$color-tertiary: #A8E6CF;   /* Mint green */
-$color-quaternary: #FFD3B6; /* Peach */
+$color-secondary: #FFB6C1;   /* Soft pink */
+$color-tertiary: #A8E6CF;    /* Mint green */
+$color-quaternary: #FFD3B6;  /* Peach */
 
 /* Background colors */
 $color-bg: #FFFFFF;
@@ -39,6 +39,39 @@ $color-text-dark: #FFFFFF;
   font-weight: 400;
 }
 
+/* Button base styles */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--button-radius);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  
+  &:hover {
+    transform: translateY(-2px);
+  }
+}
+
+.btn-primary {
+  background-color: $color-primary;
+  color: $color-text-dark;
+  
+  &:hover {
+    background-color: darken($color-primary, 5%);
+  }
+}
+
+.btn-secondary {
+  background-color: $color-secondary;
+  color: $color-text-dark;
+  
+  &:hover {
+    background-color: darken($color-secondary, 5%);
+  }
+}
+
 /* Base styles */
 body {
   font-family: 'Outfit', sans-serif;
@@ -46,4 +79,10 @@ body {
   color: $color-text;
   margin: 0;
   padding: 0;
+}
+
+/* Dark mode */
+.dark-mode {
+  background-color: $color-bg-dark;
+  color: $color-text-dark;
 }
