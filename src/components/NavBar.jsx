@@ -3,13 +3,13 @@ import './NavBar.scss';
 
 export default function NavBar() {
   const handleShare = (platform) => {
-    const shareText = "🚀 Check out SocialPlug Labs - Free AI tools for content creators!";
+    const shareText = "🚀 Check out these viral AI tools for content creators @SocialPlugLabs";
     const shareUrl = "https://socialplug-labs.netlify.app";
 
     const shareLinks = {
       twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`,
-      facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`,
-      linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`,
+      instagram: `https://www.instagram.com/`,
+      tiktok: `https://www.tiktok.com/`
     };
 
     if (shareLinks[platform]) {
@@ -23,14 +23,14 @@ export default function NavBar() {
         <h1 className="site-logo">⚡ SocialPlug Labs</h1>
         
         <div className="social-links">
+          <button onClick={() => handleShare('tiktok')} className="social-button">
+            <span className="icon">🎵</span> TikTok
+          </button>
+          <button onClick={() => handleShare('instagram')} className="social-button">
+            <span className="icon">📸</span> Instagram
+          </button>
           <button onClick={() => handleShare('twitter')} className="social-button">
-            𝕏 Twitter
-          </button>
-          <button onClick={() => handleShare('facebook')} className="social-button">
-            📘 Facebook
-          </button>
-          <button onClick={() => handleShare('linkedin')} className="social-button">
-            💼 LinkedIn
+            <span className="icon">𝕏</span> Twitter
           </button>
         </div>
       </div>

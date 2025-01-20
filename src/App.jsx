@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import NavBar from './components/NavBar'
 import { tools } from './tools'
 import ToolCard from './components/ToolCard'
@@ -6,7 +6,42 @@ import './styles/global.scss'
 
 export default function App() {
   const [activeToolId, setActiveToolId] = useState(null)
-  const activeTool = tools.find(tool => tool.id === activeToolId)
+  const [toolsList, setToolsList] = useState(tools)
+
+  // Load votes from localStorage
+  useEffect(() => {
+    const savedVotes = localStorage.getItem('toolVotes')
+    if (savedVotes) {
+      const votes = JSON.parse(savedVotes)
+      const updatedTools = tools.map(tool => ({
+        ...tool,
+        upvotes: votes[tool.id] || tool.upvotes
+      }))
+      setToolsList(sortToolsByVotes(updatedTools))
+    }
+  }, [])
+
+  const sortToolsByVotes = (tools) => {
+    return [...tools].sort((a, b) => b.upvotes - a.upvotes)
+      .map((tool, index) => ({ ...tool, rank: index + 1 }))
+  }
+
+  const handleUpvote = (toolId) => {
+    const savedVotes = JSON.parse(localStorage.getItem('toolVotes') || '{}')
+    const updatedTools = toolsList.map(tool => {
+      if (tool.id === toolId) {
+        const newVotes = (savedVotes[toolId] || tool.upvotes) + 1
+        savedVotes[toolId] = newVotes
+        return { ...tool, upvotes: newVotes }
+      }
+      return tool
+    })
+    
+    localStorage.setItem('toolVotes', JSON.stringify(savedVotes))
+    setToolsList(sortToolsByVotes(updatedTools))
+  }
+
+  const activeTool = toolsList.find(tool => tool.id === activeToolId)
 
   return (
     <div className="app-container">
@@ -15,17 +50,12 @@ export default function App() {
       <main className="main-content">
         {!activeToolId ? (
           <div className="tools-grid">
-            {tools.map(tool => (
+            {toolsList.map(tool => (
               <ToolCard
                 key={tool.id}
-                title={tool.title}
-                description={tool.description}
-                icon={tool.icon}
-                tags={tool.tags}
-                rank={tool.rank}
-                upvotes={tool.upvotes}
+                {...tool}
                 onAction={() => setActiveToolId(tool.id)}
-                onUpvote={() => console.log('Upvoted:', tool.title)}
+                onUpvote={() => handleUpvote(tool.id)}
               />
             ))}
           </div>
