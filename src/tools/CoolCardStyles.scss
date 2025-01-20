@@ -1,18 +1,94 @@
 @import '../styles/_theme.scss';
 
+/*
+  CoolCardStyles.scss
+  Enhances the .cool-card with:
+   - Slide-up fade-in animation on mount
+   - Subtle button press animation
+   - Existing hover effect
+*/
+
 .cool-card {
-  // ... previous styles remain ...
+  width: 320px;
+  height: 400px;
+  border-radius: 8px;
+  padding: 1rem;
+  background-color: lighten($color-accent, 40%);
+  border: 1px solid rgba($color-text, 0.2);
+  box-shadow: 0 2px 8px rgba($color-text, 0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  /* Initially off-screen + transparent for the mount animation */
+  opacity: 0;
+  transform: translateY(20px);
+
+  /* Hover effect is still here */
+  &:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 12px rgba($color-text, 0.1);
+    cursor: pointer;
+  }
+
+  &.mounted {
+    /* Once the component is mounted, apply keyframe animation */
+    animation: slideUpFadeIn 0.5s forwards;
+  }
+
+  .card-title {
+    @extend .heading-lg;
+    margin-bottom: 0.5rem;
+    color: $color-primary;
+  }
+
+  .card-description {
+    @extend .body-text;
+    flex-grow: 1;
+    color: $color-text;
+    opacity: 0.9;
+  }
 
   .button-row {
     display: flex;
     gap: 0.5rem;
   }
 
+  .card-button {
+    background-color: $color-primary;
+    color: $color-text-dark;
+    border: none;
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+
+    &:hover {
+      background-color: darken($color-primary, 10%);
+      cursor: pointer;
+    }
+
+    &.pressed {
+      transform: scale(0.95);
+    }
+  }
+
   .share-button {
     background-color: lighten($color-primary, 10%);
-    
     &:hover {
       background-color: $color-primary;
     }
+  }
+}
+
+/* Slide-up fade-in keyframes */
+@keyframes slideUpFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
