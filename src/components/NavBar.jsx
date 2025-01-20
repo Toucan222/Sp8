@@ -1,12 +1,7 @@
 import React from 'react';
 import './NavBar.scss';
-import { useAnalytics } from '../analytics/AnalyticsContext';
-import { useToast } from '../components/ToastContext';
 
 export default function NavBar() {
-  const { trackEvent } = useAnalytics();
-  const { showToast } = useToast();
-
   const handleShare = (platform) => {
     const shareText = "🚀 Check out SocialPlug Labs - Free AI tools for content creators!";
     const shareUrl = "https://socialplug-labs.netlify.app";
@@ -19,11 +14,6 @@ export default function NavBar() {
 
     if (shareLinks[platform]) {
       window.open(shareLinks[platform], '_blank');
-      trackEvent('social_share', { platform });
-    } else {
-      navigator.clipboard.writeText(`${shareText} ${shareUrl}`);
-      showToast('Link copied to clipboard! 🔗');
-      trackEvent('social_share', { platform: 'copy' });
     }
   };
 
@@ -41,9 +31,6 @@ export default function NavBar() {
           </button>
           <button onClick={() => handleShare('linkedin')} className="social-button">
             💼 LinkedIn
-          </button>
-          <button onClick={() => handleShare('copy')} className="social-button">
-            📋 Copy Link
           </button>
         </div>
       </div>
