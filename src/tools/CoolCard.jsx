@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useToast } from '../components/ToastContext';
+import { useAnalytics } from '../analytics/AnalyticsContext';
 import './CoolCardStyles.scss';
 
 export default function CoolCard({
@@ -9,18 +10,17 @@ export default function CoolCard({
 }) {
   const [isMounted, setIsMounted] = useState(false);
   const { showToast } = useToast();
+  const { trackEvent } = useAnalytics();
 
-  // We'll set isMounted to true after the component mounts,
-  // so we can trigger a slide-in animation via CSS.
   useEffect(() => {
     setIsMounted(true);
   }, []);
 
-  // Example "Share" handler that copies a link or text
   const handleShare = () => {
     const sampleLink = 'https://sp8.netlify.app';
     navigator.clipboard.writeText(sampleLink);
     showToast('Link copied to clipboard!');
+    trackEvent('share_clicked', { cardTitle: title });
   };
 
   return (
@@ -36,7 +36,10 @@ export default function CoolCard({
           onMouseLeave={(e) => e.currentTarget.classList.remove('pressed')}
           onTouchStart={(e) => e.currentTarget.classList.add('pressed')}
           onTouchEnd={(e) => e.currentTarget.classList.remove('pressed')}
-          onClick={onAction}
+          onClick={() => {
+            onAction();
+            trackEvent('tool_action_clicked', { cardTitle: title });
+          }}
         >
           Try It
         </button>
