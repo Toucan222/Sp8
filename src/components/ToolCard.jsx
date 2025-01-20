@@ -8,6 +8,8 @@ export default function ToolCard({
   description,
   icon,
   tags = [],
+  isNew = false,
+  usageCount = 0,
   onAction
 }) {
   const { showToast } = useToast();
@@ -15,15 +17,17 @@ export default function ToolCard({
 
   const handleShare = (e) => {
     e.stopPropagation();
-    const shareText = `Check out ${title} on SocialPlug Labs!`;
+    const shareText = `🚀 Check out ${title} on SocialPlug Labs! Create viral content instantly ✨`;
     navigator.clipboard.writeText(shareText);
-    showToast('Link copied to clipboard! 🔗');
+    showToast('Share text copied! 🔗');
     trackEvent('tool_shared', { toolName: title });
   };
 
   return (
     <div className="tool-card" onClick={onAction}>
       <div className="tool-card-content">
+        {isNew && <span className="new-badge">New ✨</span>}
+        
         <div className="tool-header">
           <span className="tool-icon">{icon}</span>
           <button className="share-button" onClick={handleShare}>
@@ -43,7 +47,10 @@ export default function ToolCard({
         </div>
 
         <div className="card-footer">
-          <span className="try-it">Try it →</span>
+          <span className="usage-count">
+            🔥 {usageCount.toLocaleString()} uses
+          </span>
+          <span className="try-it">Try it</span>
         </div>
       </div>
       

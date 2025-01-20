@@ -1,5 +1,28 @@
 @import '../styles/_theme.scss';
 
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 .tool-card {
   position: relative;
   width: 100%;
@@ -20,13 +43,15 @@
     background: linear-gradient(
       135deg,
       rgba($color-primary, 0.95),
-      rgba($color-accent, 0.95)
+      rgba($color-accent, 0.95),
+      rgba(adjust-hue($color-primary, 30deg), 0.95)
     );
+    background-size: 200% 200%;
     opacity: 0.9;
     transition: all 0.3s ease;
+    animation: gradientShift 15s ease infinite;
   }
 
-  // Shine effect
   .card-shine {
     position: absolute;
     top: 0;
@@ -45,14 +70,24 @@
 
   &:hover {
     transform: translateY(-4px) scale(1.02);
-    box-shadow: 0 12px 24px rgba($color-text, 0.15);
+    box-shadow: 
+      0 12px 24px rgba($color-text, 0.15),
+      0 0 0 1px rgba(255,255,255,0.1) inset;
 
     .card-shine {
       transform: translateX(100%);
     }
 
+    .tool-icon {
+      animation: pulse 1s ease infinite;
+    }
+
     .try-it {
       transform: translateX(4px);
+    }
+
+    .new-badge {
+      animation: float 2s ease infinite;
     }
   }
 
@@ -63,6 +98,7 @@
     display: flex;
     flex-direction: column;
     color: white;
+    backdrop-filter: blur(5px);
   }
 
   .tool-header {
@@ -73,8 +109,23 @@
   }
 
   .tool-icon {
-    font-size: 2rem;
-    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+    font-size: 2.2rem;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+    transition: all 0.3s ease;
+  }
+
+  .new-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(255,255,255,0.9);
+    color: $color-primary;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   }
 
   .share-button {
@@ -86,6 +137,7 @@
     font-size: 0.8rem;
     cursor: pointer;
     transition: all 0.2s ease;
+    backdrop-filter: blur(5px);
 
     &:hover {
       background: rgba(255,255,255,0.3);
@@ -97,14 +149,16 @@
     font-size: 1.25rem;
     font-weight: 600;
     margin-bottom: 0.5rem;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    letter-spacing: 0.5px;
   }
 
   .tool-description {
     font-size: 0.9rem;
-    opacity: 0.9;
+    opacity: 0.95;
     line-height: 1.4;
     margin-bottom: 1rem;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
   }
 
   .tool-tags {
@@ -114,25 +168,53 @@
     margin-bottom: 1rem;
 
     .tag {
-      background: rgba(255,255,255,0.2);
-      padding: 0.2rem 0.6rem;
+      background: rgba(255,255,255,0.15);
+      padding: 0.3rem 0.7rem;
       border-radius: 12px;
       font-size: 0.8rem;
       display: flex;
       align-items: center;
       gap: 0.3rem;
+      backdrop-filter: blur(5px);
+      transition: all 0.2s ease;
+
+      &:hover {
+        background: rgba(255,255,255,0.25);
+        transform: translateY(-1px);
+      }
     }
   }
 
   .card-footer {
     margin-top: auto;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
+    align-items: center;
   }
 
   .try-it {
     font-weight: 500;
     transition: transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    &::after {
+      content: '→';
+      transition: transform 0.2s ease;
+    }
+
+    &:hover::after {
+      transform: translateX(4px);
+    }
+  }
+
+  .usage-count {
+    font-size: 0.8rem;
+    opacity: 0.8;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
   }
 }
 
@@ -143,25 +225,26 @@
       background: linear-gradient(
         135deg,
         rgba(lighten($color-primary, 5%), 0.95),
-        rgba(lighten($color-accent, 5%), 0.95)
+        rgba(lighten($color-accent, 5%), 0.95),
+        rgba(adjust-hue($color-primary, 30deg), 0.95)
       );
     }
 
-    .share-button, .tag {
-      background: rgba(255,255,255,0.15);
-      
-      &:hover {
-        background: rgba(255,255,255,0.25);
-      }
+    .new-badge {
+      background: rgba(255,255,255,0.95);
     }
   }
 }
 
-// Hover animations for cards in grid
+// Grid hover effects
 .tools-grid {
+  perspective: 1000px;
+  
   .tool-card {
+    transition: all 0.3s ease;
+    
     &:hover {
-      z-index: 1;
+      z-index: 2;
       ~ .tool-card {
         transform: translateX(10px);
       }

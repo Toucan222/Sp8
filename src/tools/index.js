@@ -13,7 +13,9 @@ export const tools = [
       { name: 'TikTok', icon: '📱' },
       { name: 'Viral', icon: '🚀' },
       { name: 'AI', icon: '🤖' }
-    ]
+    ],
+    isNew: true,
+    usageCount: 1234
   },
   {
     id: 2,
@@ -24,7 +26,8 @@ export const tools = [
     tags: [
       { name: 'Demo', icon: '🔍' },
       { name: 'AI', icon: '🤖' }
-    ]
+    ],
+    usageCount: 856
   },
   {
     id: 3,
@@ -35,6 +38,7 @@ export const tools = [
     tags: [
       { name: 'AI', icon: '🤖' },
       { name: 'Text', icon: '📝' }
-    ]
+    ],
+    usageCount: 2341
   }
 ]
