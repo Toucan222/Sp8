@@ -1,9 +1,11 @@
 import { useState } from 'react'
+import { useMediaQuery } from 'react-responsive'
 import NavBar from './components/NavBar'
 import HeroSection from './components/HeroSection'
 import Footer from './components/Footer'
 import Login from './auth/Login'
 import SearchTools from './components/SearchTools'
+import MobileLayout from './components/MobileLayout'
 import { useUserAuth } from './auth/UserAuthContext'
 import { tools } from './tools'
 import CoolCard from './tools/CoolCard'
@@ -13,8 +15,9 @@ export default function App() {
   const [activeToolId, setActiveToolId] = useState(null)
   const [searchQuery, setSearchQuery] = useState('')
   const { isLoggedIn } = useUserAuth()
-  const activeTool = tools.find(tool => tool.id === activeToolId)
+  const isMobile = useMediaQuery({ maxWidth: 768 })
 
+  const activeTool = tools.find(tool => tool.id === activeToolId)
   const filteredTools = tools.filter((tool) =>
     tool.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
     tool.description.toLowerCase().includes(searchQuery.toLowerCase())
@@ -42,22 +45,23 @@ export default function App() {
               )}
             </div>
 
-            <SearchTools onSearch={(value) => setSearchQuery(value)} />
-            
-            {filteredTools.length > 0 ? (
-              <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-                {filteredTools.map(tool => (
-                  <CoolCard
-                    key={tool.id}
-                    title={tool.title}
-                    description={tool.description}
-                    icon={tool.icon}
-                    onAction={() => setActiveToolId(tool.id)}
-                  />
-                ))}
-              </div>
+            {isMobile ? (
+              <MobileLayout />
             ) : (
-              <p>No tools found matching your search.</p>
+              <>
+                <SearchTools onSearch={(value) => setSearchQuery(value)} />
+                <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+                  {filteredTools.map(tool => (
+                    <CoolCard
+                      key={tool.id}
+                      title={tool.title}
+                      description={tool.description}
+                      icon={tool.icon}
+                      onAction={() => setActiveToolId(tool.id)}
+                    />
+                  ))}
+                </div>
+              </>
             )}
           </div>
         ) : (
@@ -73,7 +77,6 @@ export default function App() {
           </div>
         )}
 
-        {/* Optional login section */}
         {!isLoggedIn && (
           <section className="login-section mt-2">
             <h3 className="heading-lg">Optional: Sign In</h3>

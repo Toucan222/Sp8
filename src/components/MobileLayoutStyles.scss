@@ -1,0 +1,53 @@
+@import '../styles/_theme.scss';
+@import '../styles/_spacing.scss';
+
+.mobile-layout-container {
+  width: 100%;
+  min-height: calc(100vh - 60px); /* Account for NavBar */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.card-wrapper {
+  width: 100%;
+  max-width: 340px;
+  height: 80vh;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  .cool-card {
+    width: 100%;
+    height: auto;
+    max-height: 100%;
+    margin: 0;
+  }
+}
+
+.controls-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  width: 100%;
+  max-width: 340px;
+  justify-content: space-between;
+
+  .page-indicator {
+    font-size: 0.9rem;
+    color: $color-text;
+    opacity: 0.8;
+  }
+}
+
+.dark-mode {
+  .page-indicator {
+    color: $color-text-dark;
+  }
+}
