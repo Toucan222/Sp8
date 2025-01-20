@@ -14,7 +14,7 @@ export default function App() {
   const activeTool = tools.find(tool => tool.id === activeToolId)
 
   return (
-    <div>
+    <>
       <NavBar />
       {!isLoggedIn ? (
         <>
@@ -54,6 +54,6 @@ export default function App() {
         </main>
       )}
       <Footer />
-    </div>
+    </>
   )
 }
