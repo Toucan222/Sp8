@@ -1,0 +1,17 @@
+@import '../styles/_theme.scss';
+
+.tools-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  min-height: 400px;
+}
+
+.tool-card-wrapper {
+  display: none;
+  transition: transform 0.3s ease;
+
+  &.visible {
+    display: block;
+  }
+}
