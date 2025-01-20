@@ -6,22 +6,22 @@ import './CoolCardStyles.scss';
 export default function CoolCard({
   title = 'Untitled Tool',
   description = 'No description available.',
-  icon = '🔧', // default icon/emoji
+  icon = '🔧',
   onAction = () => {},
   onShare = () => {}
 }) {
   const { showToast } = useToast();
   const { trackEvent } = useAnalytics();
-
   const [isMounted, setIsMounted] = useState(false);
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
 
-  const handleAction = () => {
-    onAction();
-    trackEvent('tool_action_clicked', { cardTitle: title });
-  };
+  // Ensure mounted state is set after initial render
+  useEffect(() => {
+    // Small delay to ensure animation triggers
+    const timer = setTimeout(() => {
+      setIsMounted(true);
+    }, 100);
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleShare = () => {
     onShare();
@@ -33,7 +33,7 @@ export default function CoolCard({
   return (
     <div className={`cool-card ${isMounted ? 'mounted' : ''}`}>
       <div className="card-header">
-        <span className="card-icon" role="img" aria-label="tool-icon">
+        <span className="card-icon" role="img" aria-label="tool icon">
           {icon}
         </span>
         <h3 className="card-title">{title}</h3>
@@ -42,7 +42,7 @@ export default function CoolCard({
       <p className="card-description">{description}</p>
 
       <div className="button-row">
-        <button className="card-button" onClick={handleAction}>
+        <button className="card-button" onClick={onAction}>
           Try It
         </button>
         <button className="card-button share-button" onClick={handleShare}>
