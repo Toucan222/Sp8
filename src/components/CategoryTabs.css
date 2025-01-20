@@ -1,0 +1,35 @@
+.category-tabs {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-lg);
+  flex-wrap: wrap;
+}
+
+.tab-button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: var(--radius-md);
+  background-color: #eee;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.tab-button:hover {
+  background-color: #ddd;
+}
+
+.tab-button.active {
+  background-color: var(--color-primary);
+  color: var(--text-light);
+}
+
+/* Dark mode styles */
+.dark-mode .tab-button {
+  background-color: #333;
+  color: var(--text-light);
+}
+
+.dark-mode .tab-button:hover {
+  background-color: #444;
+}

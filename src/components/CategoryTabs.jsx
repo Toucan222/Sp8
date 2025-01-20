@@ -1,20 +1,18 @@
-import React from "react";
-import './CategoryTabsStyles.scss';
+import React from 'react';
+import './CategoryTabs.css';
 
-function CategoryTabs({ categories, currentCategory, onCategoryChange }) {
+export default function CategoryTabs({ categories, currentCategory, onCategoryChange }) {
   return (
     <div className="category-tabs">
-      {categories.map((cat) => (
+      {categories.map(category => (
         <button
-          key={cat}
-          onClick={() => onCategoryChange(cat)}
-          className={`tab-button ${cat === currentCategory ? 'active' : ''}`}
+          key={category}
+          className={`tab-button ${category === currentCategory ? 'active' : ''}`}
+          onClick={() => onCategoryChange(category)}
         >
-          {cat}
+          {category}
         </button>
       ))}
     </div>
   );
 }
-
-export default CategoryTabs;
