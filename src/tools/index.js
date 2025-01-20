@@ -5,8 +5,8 @@ export const tools = [
   {
     id: 1,
     title: 'Example Tool',
-    description: 'A placeholder tool to demonstrate the system.',
-    icon: '🔧',
+    description: 'A sample tool demonstrating AI text summarization.',
+    icon: '📝',
     component: ExampleTool
   },
   {
