@@ -1,7 +1,14 @@
 @import './_theme.scss';
+@import './_spacing.scss';
 
-/* 
-  You can now reference these color/text classes in any component.
-  For example:
-    <div className="heading-lg">Hello from the New Theme!</div>
-*/
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+}
