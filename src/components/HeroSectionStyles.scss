@@ -2,51 +2,70 @@
 
 .hero-container {
   width: 100%;
-  min-height: 60vh;
+  min-height: 70vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(
-    135deg,
-    lighten($color-accent, 20%),
-    lighten($color-primary, 20%)
-  );
-  padding: 2rem;
+  padding: 3rem 1rem;
   box-sizing: border-box;
   text-align: center;
   color: $color-text;
-  animation: fadeInHero 1s ease forwards;
+
+  background: linear-gradient(
+    135deg,
+    lighten($color-accent, 15%),
+    lighten($color-primary, 10%)
+  );
+
+  margin-top: 2rem;
+
+  animation: fadeInHero 0.7s ease forwards;
   opacity: 0;
 }
 
 .hero-content {
   max-width: 600px;
+}
 
-  .hero-title {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    color: $color-primary;
-  }
+.hero-title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: $color-primary;
+}
 
-  .hero-tagline {
-    font-size: 1.1rem;
-    margin-bottom: 1.5rem;
-    line-height: 1.4;
-  }
+.hero-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem 0;
 
-  .hero-cta {
-    background-color: $color-primary;
-    color: $color-text-dark;
-    border: none;
-    padding: 0.75rem 1.25rem;
-    border-radius: 4px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-
-    &:hover {
-      background-color: darken($color-primary, 10%);
+  li {
+    margin: 0.5rem 0;
+    font-weight: 500;
+    &::before {
+      content: '• ';
+      color: $color-accent;
     }
+  }
+}
+
+.hero-tagline {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.4;
+}
+
+.hero-cta {
+  background-color: $color-primary;
+  color: $color-text-dark;
+  border: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: darken($color-primary, 10%);
   }
 }
 
@@ -54,4 +73,13 @@
   to {
     opacity: 1;
   }
+}
+
+.dark-mode .hero-container {
+  background: linear-gradient(
+    135deg,
+    darken($color-accent, 20%),
+    darken($color-primary, 20%)
+  );
+  color: $color-text-dark;
 }

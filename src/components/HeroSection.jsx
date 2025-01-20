@@ -3,12 +3,20 @@ import './HeroSectionStyles.scss';
 
 export default function HeroSection() {
   return (
-    <section className="hero-container">
+    <section id="hero" className="hero-container">
       <div className="hero-content">
         <h1 className="hero-title">Welcome to SocialPlug Labs</h1>
+
+        <ul className="hero-bullets">
+          <li>100+ Free Tools for Content Creation</li>
+          <li>Instant AI Capabilities & Ideas</li>
+          <li>Optional Login for Personalization</li>
+        </ul>
+
         <p className="hero-tagline">
-          Your free suite of creative tools, AI ideas, and more
+          Supercharge your socials and boost creativity—no signups needed!
         </p>
+
         <button
           className="hero-cta"
           onClick={() => window.scrollTo({ top: 800, behavior: 'smooth' })}
