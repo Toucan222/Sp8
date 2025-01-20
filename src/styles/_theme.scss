@@ -1,10 +1,14 @@
-/* Updated color palette based on the image */
+/* Base colors */
 $color-primary: #7C7FEA;    /* Soft purple */
-$color-secondary: #FFB6C1;   /* Soft pink */
-$color-tertiary: #A8E6CF;    /* Mint green */
-$color-quaternary: #FFD3B6;  /* Peach */
+$color-accent: #FFB6C1;     /* Soft pink */
+$color-tertiary: #A8E6CF;   /* Mint green */
+$color-quaternary: #FFD3B6; /* Peach */
+
+/* Background colors */
 $color-bg: #FFFFFF;
 $color-bg-dark: #1E1E1E;
+
+/* Text colors */
 $color-text: #2D2D2D;
 $color-text-dark: #FFFFFF;
 
@@ -16,12 +20,7 @@ $color-text-dark: #FFFFFF;
   --button-radius: 12px;
 }
 
-body {
-  font-family: 'Outfit', sans-serif;
-  background-color: $color-bg;
-  color: $color-text;
-}
-
+/* Typography classes */
 .heading-lg {
   font-size: 1.75rem;
   font-weight: 700;
@@ -38,4 +37,13 @@ body {
   font-size: 1rem;
   line-height: 1.5;
   font-weight: 400;
+}
+
+/* Base styles */
+body {
+  font-family: 'Outfit', sans-serif;
+  background-color: $color-bg;
+  color: $color-text;
+  margin: 0;
+  padding: 0;
 }
