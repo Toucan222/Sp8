@@ -1,19 +1,25 @@
-import ExampleTool from './ExampleTool'
-import LLMDemoTool from './LLMDemoTool'
+import ExampleTool from "./ExampleTool";
+import LLMDemoTool from "./LLMDemoTool";
 
-export const tools = [
+const tools = [
   {
-    id: 1,
-    title: 'Example Tool',
-    description: 'A sample tool demonstrating AI text summarization.',
-    icon: '📝',
-    component: ExampleTool
+    id: "exampleTool",
+    title: "Example Tool",
+    description: "A sample implementation to show how it works.",
+    component: ExampleTool,
+    category: "AI Text",
+    icon: "📝",
+    features: ["Demonstrates user input", "Calls DeepSeek LLM"]
   },
   {
-    id: 2,
-    title: 'LLM Demo',
-    description: 'Try the DeepSeek LLM with a user prompt',
-    icon: '🤖',
-    component: LLMDemoTool
+    id: "llmDemoTool",
+    title: "LLM Demo Tool",
+    description: "Showcases real-time AI text generation via DeepSeek.",
+    component: LLMDemoTool,
+    category: "AI Text",
+    icon: "🤖",
+    features: ["Generates short text", "On-demand content creation"]
   }
-]
+];
+
+export default tools;

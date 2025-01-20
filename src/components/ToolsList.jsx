@@ -1,78 +1,50 @@
-import React, { useState } from "react";
-import SwipeableContainer from "./SwipeableContainer";
-import { tools } from "../tools"; 
+import React, { useState, useMemo } from "react";
+import tools from "../tools";
+import CategoryTabs from "./CategoryTabs";
 import CoolCard from "../tools/CoolCard";
-import { useAnalytics } from '../analytics/AnalyticsContext';
-import "./ToolsListStyles.scss";
 
-function ToolsList({ onToolSelect }) {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const { trackEvent } = useAnalytics();
+function ToolsList() {
+  const allCategories = useMemo(() => {
+    const categoriesSet = new Set(tools.map((t) => t.category));
+    return ["All", ...Array.from(categoriesSet)];
+  }, []);
 
-  const handleSwipeLeft = () => {
-    trackEvent('tool_swipe', { direction: 'left', fromIndex: currentIndex });
-    setCurrentIndex((prevIndex) => {
-      if (prevIndex < tools.length - 1) {
-        return prevIndex + 1;
-      }
-      return prevIndex;
-    });
-  };
+  const [currentCategory, setCurrentCategory] = useState("All");
+  const [searchQuery, setSearchQuery] = useState("");
 
-  const handleSwipeRight = () => {
-    trackEvent('tool_swipe', { direction: 'right', fromIndex: currentIndex });
-    setCurrentIndex((prevIndex) => {
-      if (prevIndex > 0) {
-        return prevIndex - 1;
-      }
-      return prevIndex;
-    });
-  };
+  const filteredTools = useMemo(() => {
+    let filtered = currentCategory === "All" 
+      ? tools 
+      : tools.filter((tool) => tool.category === currentCategory);
+    
+    if (searchQuery) {
+      filtered = filtered.filter((tool) =>
+        tool.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        tool.description.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+    }
+    
+    return filtered;
+  }, [currentCategory, searchQuery]);
 
   return (
-    <div className="tools-list">
-      <SwipeableContainer
-        onSwipeLeft={handleSwipeLeft}
-        onSwipeRight={handleSwipeRight}
-      >
-        <div className="tools-container">
-          {tools.map((tool, index) => {
-            const isVisible = index === currentIndex;
-            return (
-              <div
-                key={tool.id}
-                className={`tool-card-wrapper ${isVisible ? 'visible' : ''}`}
-              >
-                <CoolCard
-                  title={tool.title}
-                  description={tool.description}
-                  icon={tool.icon}
-                  onAction={() => onToolSelect(tool.id)}
-                />
-              </div>
-            );
-          })}
-        </div>
-      </SwipeableContainer>
-      
-      <div className="tools-navigation">
-        <button 
-          className="btn btn-outline"
-          onClick={handleSwipeRight}
-          disabled={currentIndex === 0}
-        >
-          ← Previous
-        </button>
-        <span className="tools-counter">
-          {currentIndex + 1} / {tools.length}
-        </span>
-        <button 
-          className="btn btn-outline"
-          onClick={handleSwipeLeft}
-          disabled={currentIndex === tools.length - 1}
-        >
-          Next →
-        </button>
+    <div className="tools-container">
+      <CategoryTabs
+        categories={allCategories}
+        currentCategory={currentCategory}
+        onCategoryChange={setCurrentCategory}
+      />
+
+      <div className="tools-grid">
+        {filteredTools.map((tool) => (
+          <CoolCard
+            key={tool.id}
+            title={tool.title}
+            description={tool.description}
+            icon={tool.icon}
+            onAction={() => {}} // Add your action handler
+          />
+        ))}
       </div>
     </div>
   );
