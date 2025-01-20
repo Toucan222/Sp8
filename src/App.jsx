@@ -2,6 +2,7 @@ import { useState } from 'react'
 import NavBar from './components/NavBar'
 import Footer from './components/Footer'
 import { tools } from './tools'
+import CoolCard from './tools/CoolCard'
 import './styles/global.scss'
 
 export default function App() {
@@ -15,21 +16,14 @@ export default function App() {
         {!activeToolId ? (
           <div>
             <h2 className="heading-lg">SocialPlug Labs Tools</h2>
-            <div style={{ display: 'grid', gap: '1rem' }}>
+            <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
               {tools.map(tool => (
-                <div
+                <CoolCard
                   key={tool.id}
-                  onClick={() => setActiveToolId(tool.id)}
-                  style={{ 
-                    padding: '1rem',
-                    border: '1px solid #ddd',
-                    borderRadius: '4px',
-                    cursor: 'pointer'
-                  }}
-                >
-                  <h3 className="heading-lg">{tool.title}</h3>
-                  <p className="body-text">{tool.description}</p>
-                </div>
+                  title={tool.title}
+                  description={tool.description}
+                  onAction={() => setActiveToolId(tool.id)}
+                />
               ))}
             </div>
           </div>
