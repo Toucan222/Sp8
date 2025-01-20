@@ -41,7 +41,6 @@
   margin: 0 auto;
 }
 
-/* Mobile optimizations */
 @media (max-width: 768px) {
   .main-content {
     padding: 1rem;
@@ -55,11 +54,11 @@
       width: 100%;
     }
   }
-}
 
-/* iOS safe area support */
-@supports (-webkit-touch-callout: none) {
-  .main-content {
-    padding-bottom: env(safe-area-inset-bottom, 1rem);
+  .tools-grid {
+    .cool-card {
+      width: 100%;
+      margin: 0 auto;
+    }
   }
 }

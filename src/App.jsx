@@ -1,11 +1,9 @@
-import { useState, useEffect } from 'react'
-import { useMediaQuery } from 'react-responsive'
+import { useState } from 'react'
 import NavBar from './components/NavBar'
 import HeroSection from './components/HeroSection'
 import Footer from './components/Footer'
 import Login from './auth/Login'
 import SearchTools from './components/SearchTools'
-import MobileLayout from './components/MobileLayout'
 import { useUserAuth } from './auth/UserAuthContext'
 import { tools } from './tools'
 import CoolCard from './tools/CoolCard'
@@ -15,13 +13,6 @@ export default function App() {
   const [activeToolId, setActiveToolId] = useState(null)
   const [searchQuery, setSearchQuery] = useState('')
   const { isLoggedIn } = useUserAuth()
-  const isMobile = useMediaQuery({ maxWidth: 768 })
-  const [isClient, setIsClient] = useState(false)
-
-  // Prevent hydration mismatch
-  useEffect(() => {
-    setIsClient(true)
-  }, [])
 
   const activeTool = tools.find(tool => tool.id === activeToolId)
   const filteredTools = tools.filter((tool) =>
@@ -49,24 +40,18 @@ export default function App() {
               )}
             </div>
 
-            {isClient && (isMobile ? (
-              <MobileLayout onToolSelect={setActiveToolId} />
-            ) : (
-              <>
-                <SearchTools onSearch={(value) => setSearchQuery(value)} />
-                <div className="tools-grid">
-                  {filteredTools.map(tool => (
-                    <CoolCard
-                      key={tool.id}
-                      title={tool.title}
-                      description={tool.description}
-                      icon={tool.icon}
-                      onAction={() => setActiveToolId(tool.id)}
-                    />
-                  ))}
-                </div>
-              </>
-            ))}
+            <SearchTools onSearch={(value) => setSearchQuery(value)} />
+            <div className="tools-grid">
+              {filteredTools.map(tool => (
+                <CoolCard
+                  key={tool.id}
+                  title={tool.title}
+                  description={tool.description}
+                  icon={tool.icon}
+                  onAction={() => setActiveToolId(tool.id)}
+                />
+              ))}
+            </div>
           </div>
         ) : (
           <div className="tool-detail">
