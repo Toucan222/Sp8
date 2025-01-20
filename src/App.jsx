@@ -2,11 +2,10 @@ import { useState } from 'react'
 import NavBar from './components/NavBar'
 import Footer from './components/Footer'
 import { tools } from './tools'
-import './styles/global.css'
+import './styles/global.scss'
 
 export default function App() {
   const [activeToolId, setActiveToolId] = useState(null)
-
   const activeTool = tools.find(tool => tool.id === activeToolId)
 
   return (
@@ -15,7 +14,7 @@ export default function App() {
       <main style={{ padding: '2rem', minHeight: '80vh' }}>
         {!activeToolId ? (
           <div>
-            <h2>SocialPlug Labs Tools</h2>
+            <h2 className="heading-lg">SocialPlug Labs Tools</h2>
             <div style={{ display: 'grid', gap: '1rem' }}>
               {tools.map(tool => (
                 <div
@@ -28,8 +27,8 @@ export default function App() {
                     cursor: 'pointer'
                   }}
                 >
-                  <h3>{tool.title}</h3>
-                  <p>{tool.description}</p>
+                  <h3 className="heading-lg">{tool.title}</h3>
+                  <p className="body-text">{tool.description}</p>
                 </div>
               ))}
             </div>
@@ -42,7 +41,7 @@ export default function App() {
             >
               ← Back to Tools
             </button>
-            <h2>{activeTool.title}</h2>
+            <h2 className="heading-lg">{activeTool.title}</h2>
             <activeTool.component />
           </div>
         )}
