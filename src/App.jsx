@@ -18,8 +18,6 @@ export default function App() {
         upvotes: votes[tool.id] || tool.upvotes
       }))
       setToolsList(sortToolsByVotes(updatedTools))
-    } else {
-      setToolsList(tools) // Ensure tools are set even if no votes exist
     }
   }, [])
 
@@ -44,9 +42,6 @@ export default function App() {
   }
 
   const activeTool = toolsList.find(tool => tool.id === activeToolId)
-
-  // Debug log to check number of tools
-  console.log('Total tools:', toolsList.length)
 
   return (
     <div className="app-container">

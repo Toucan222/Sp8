@@ -1,16 +1,25 @@
 import React, { useState } from 'react';
 import { askDeepseek } from '../utils/deepseeksApi';
+import { useToast } from '../components/ToastContext';
+import { useAnalytics } from '../analytics/AnalyticsContext';
 import './TikTokTrendGeneratorStyles.scss';
 
 export default function TikTokTrendGenerator() {
   const [topic, setTopic] = useState('');
   const [ideas, setIdeas] = useState([]);
   const [loading, setLoading] = useState(false);
+  const { showToast } = useToast();
+  const { trackEvent } = useAnalytics();
 
   const handleGenerate = async () => {
-    if (!topic.trim()) return;
-    
+    if (!topic.trim()) {
+      showToast('Please enter a topic first!');
+      return;
+    }
+
     setLoading(true);
+    trackEvent('tiktok_generator_used', { topic });
+
     try {
       const prompt = `Generate 3 creative TikTok video ideas about ${topic}. For each idea include:
       1. A catchy hook/title
@@ -21,9 +30,11 @@ export default function TikTokTrendGenerator() {
 
       const response = await askDeepseek(prompt);
       setIdeas(response.split('\n').filter(line => line.trim()));
+      showToast('Ideas generated successfully!');
     } catch (err) {
       console.error(err);
-      setIdeas(['Error generating ideas. Please try again.']);
+      showToast('Error generating ideas. Please try again.');
+      setIdeas([]);
     } finally {
       setLoading(false);
     }
@@ -32,14 +43,17 @@ export default function TikTokTrendGenerator() {
   return (
     <div className="tiktok-trend-generator">
       <div className="input-section">
+        <label htmlFor="topic">What's your content topic?</label>
         <input 
+          id="topic"
           type="text" 
-          placeholder="Enter a topic (e.g., skincare, fitness)"
+          placeholder="Enter a topic (e.g., skincare, fitness, cooking)"
           value={topic}
           onChange={(e) => setTopic(e.target.value)}
           disabled={loading}
         />
         <button 
+          className="btn generate-btn" 
           onClick={handleGenerate}
           disabled={loading}
         >
