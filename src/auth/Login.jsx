@@ -16,7 +16,7 @@ export default function Login() {
 
   if (isLoggedIn) {
     return (
-      <div style={{ padding: '1rem' }}>
+      <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
         <h3>You are logged in as {user?.username}</h3>
         <p>Feel free to explore personalized features in other tools!</p>
       </div>
@@ -24,8 +24,25 @@ export default function Login() {
   }
 
   return (
-    <form onSubmit={handleSubmit} style={{ padding: '1rem', maxWidth: '300px' }}>
-      <label htmlFor="username" style={{ display: 'block', marginBottom: '0.5rem' }}>
+    <form 
+      onSubmit={handleSubmit} 
+      style={{ 
+        maxWidth: '300px', 
+        margin: '0 auto', 
+        textAlign: 'center' 
+      }}
+    >
+      <label 
+        htmlFor="username" 
+        style={{ 
+          display: 'block', 
+          marginBottom: '0.5rem', 
+          fontWeight: '500' 
+        }}
+      >
+        <span role="img" aria-label="user" style={{ marginRight: '0.5rem' }}>
+          👤
+        </span>
         Enter Username
       </label>
       <input
@@ -35,10 +52,11 @@ export default function Login() {
         onChange={(e) => setUsername(e.target.value)}
         style={{
           width: '100%',
-          padding: '0.5rem',
+          padding: '0.75rem',
           marginBottom: '1rem',
           border: '1px solid #ccc',
-          borderRadius: '4px',
+          borderRadius: '6px',
+          fontSize: '1rem',
         }}
       />
       <button
@@ -48,8 +66,10 @@ export default function Login() {
           color: '#fff',
           border: 'none',
           borderRadius: '4px',
-          padding: '0.5rem 1rem',
+          padding: '0.75rem 1rem',
           cursor: 'pointer',
+          fontSize: '1rem',
+          fontWeight: '600'
         }}
       >
         Login

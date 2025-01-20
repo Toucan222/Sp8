@@ -7,6 +7,7 @@ import { useUserAuth } from './auth/UserAuthContext'
 import { tools } from './tools'
 import CoolCard from './tools/CoolCard'
 import './styles/global.scss'
+import './styles/LoginSectionStyles.scss'
 
 export default function App() {
   const [activeToolId, setActiveToolId] = useState(null)
@@ -19,9 +20,10 @@ export default function App() {
       {!isLoggedIn ? (
         <>
           <HeroSection />
-          <main style={{ padding: '2rem' }}>
+          <section className="login-section">
+            <h2 className="login-heading">Sign In</h2>
             <Login />
-          </main>
+          </section>
         </>
       ) : (
         <main style={{ padding: '2rem', minHeight: '80vh' }}>
