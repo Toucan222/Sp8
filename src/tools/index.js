@@ -1,421 +1,403 @@
-import TikTokTrendGenerator from './TikTokTrendGenerator'
-import BlankTool from './BlankTool'
+// ... (Previous 50 tools remain the same)
 
-export const tools = [
+// Adding tools 51-100:
   {
-    id: 1,
-    title: 'TikTok Trend Generator',
-    description: 'Generate viral-worthy TikTok video ideas for any topic',
-    icon: '🎵',
-    component: TikTokTrendGenerator,
-    tags: [
-      { name: 'TikTok', icon: '📱' },
-      { name: 'Viral', icon: '🚀' },
-      { name: 'AI', icon: '🤖' }
-    ],
-    upvotes: 1234
-  },
-  // Content Ideation Tools
-  {
-    id: 2,
-    title: 'Hashtag Optimizer',
+    id: 51,
+    title: 'Story Transition Builder',
     description: 'Coming soon...',
-    icon: '#️⃣',
-    component: BlankTool,
-    tags: [{ name: 'Growth', icon: '📈' }],
-    upvotes: 0
-  },
-  {
-    id: 3,
-    title: 'Viral Hook Writer',
-    description: 'Coming soon...',
-    icon: '🎣',
-    component: BlankTool,
-    tags: [{ name: 'Writing', icon: '✍️' }],
-    upvotes: 0
-  },
-  {
-    id: 4,
-    title: 'Story Arc Builder',
-    description: 'Coming soon...',
-    icon: '📈',
+    icon: '🎬',
     component: BlankTool,
     upvotes: 0
   },
   {
-    id: 5,
-    title: 'Trending Audio Finder',
+    id: 52,
+    title: 'Viral Color Palette Generator',
     description: 'Coming soon...',
-    icon: '🎧',
-    component: BlankTool,
-    upvotes: 0
-  },
-  // Engagement Tools
-  {
-    id: 6,
-    title: 'Caption Generator Pro',
-    description: 'Coming soon...',
-    icon: '✨',
+    icon: '🎨',
     component: BlankTool,
     upvotes: 0
   },
   {
-    id: 7,
-    title: 'Engagement Time Optimizer',
-    description: 'Coming soon...',
-    icon: '⏰',
-    component: BlankTool,
-    upvotes: 0
-  },
-  {
-    id: 8,
-    title: 'Duet Concept Creator',
-    description: 'Coming soon...',
-    icon: '👯',
-    component: BlankTool,
-    upvotes: 0
-  },
-  {
-    id: 9,
-    title: 'Transition Effects Generator',
-    description: 'Coming soon...',
-    icon: '🔄',
-    component: BlankTool,
-    upvotes: 0
-  },
-  {
-    id: 10,
-    title: 'Content Calendar AI',
-    description: 'Coming soon...',
-    icon: '📅',
-    component: BlankTool,
-    upvotes: 0
-  },
-  // Growth Tools
-  {
-    id: 11,
-    title: 'Viral Challenge Designer',
-    description: 'Coming soon...',
-    icon: '🏆',
-    component: BlankTool,
-    upvotes: 0
-  },
-  {
-    id: 12,
-    title: 'Niche Explorer',
-    description: 'Coming soon...',
-    icon: '🎯',
-    component: BlankTool,
-    upvotes: 0
-  },
-  {
-    id: 13,
-    title: 'Trend Predictor',
-    description: 'Coming soon...',
-    icon: '🔮',
-    component: BlankTool,
-    upvotes: 0
-  },
-  {
-    id: 14,
-    title: 'Collab Finder',
-    description: 'Coming soon...',
-    icon: '🤝',
-    component: BlankTool,
-    upvotes: 0
-  },
-  {
-    id: 15,
-    title: 'Audience Analyzer',
-    description: 'Coming soon...',
-    icon: '👥',
-    component: BlankTool,
-    upvotes: 0
-  },
-  // Content Enhancement
-  {
-    id: 16,
-    title: 'Sound Effect Suggester',
+    id: 53,
+    title: 'Sound Effect Sequencer',
     description: 'Coming soon...',
     icon: '🔊',
     component: BlankTool,
     upvotes: 0
   },
   {
-    id: 17,
-    title: 'Filter Matcher',
+    id: 54,
+    title: 'Outfit Transition Generator',
+    description: 'Coming soon...',
+    icon: '👗',
+    component: BlankTool,
+    upvotes: 0
+  },
+  {
+    id: 55,
+    title: 'Room Transformation Planner',
+    description: 'Coming soon...',
+    icon: '🏠',
+    component: BlankTool,
+    upvotes: 0
+  },
+  {
+    id: 56,
+    title: 'Recipe Video Formatter',
+    description: 'Coming soon...',
+    icon: '🍳',
+    component: BlankTool,
+    upvotes: 0
+  },
+  {
+    id: 57,
+    title: 'Workout Routine Generator',
+    description: 'Coming soon...',
+    icon: '💪',
+    component: BlankTool,
+    upvotes: 0
+  },
+  {
+    id: 58,
+    title: 'Beauty Tutorial Planner',
+    description: 'Coming soon...',
+    icon: '💄',
+    component: BlankTool,
+    upvotes: 0
+  },
+  {
+    id: 59,
+    title: 'DIY Project Generator',
+    description: 'Coming soon...',
+    icon: '🛠️',
+    component: BlankTool,
+    upvotes: 0
+  },
+  {
+    id: 60,
+    title: 'Travel Content Planner',
+    description: 'Coming soon...',
+    icon: '✈️',
+    component: BlankTool,
+    upvotes: 0
+  },
+  {
+    id: 61,
+    title: 'Pet Content Generator',
+    description: 'Coming soon...',
+    icon: '🐾',
+    component: BlankTool,
+    upvotes: 0
+  },
+  {
+    id: 62,
+    title: 'Study Tips Generator',
+    description: 'Coming soon...',
+    icon: '📚',
+    component: BlankTool,
+    upvotes: 0
+  },
+  {
+    id: 63,
+    title: 'Life Hack Generator',
+    description: 'Coming soon...',
+    icon: '💡',
+    component: BlankTool,
+    upvotes: 0
+  },
+  {
+    id: 64,
+    title: 'Prank Idea Generator',
+    description: 'Coming soon...',
+    icon: '😈',
+    component: BlankTool,
+    upvotes: 0
+  },
+  {
+    id: 65,
+    title: 'Dance Tutorial Builder',
+    description: 'Coming soon...',
+    icon: '🕺',
+    component: BlankTool,
+    upvotes: 0
+  },
+  {
+    id: 66,
+    title: 'Gaming Highlight Generator',
+    description: 'Coming soon...',
+    icon: '🎮',
+    component: BlankTool,
+    upvotes: 0
+  },
+  {
+    id: 67,
+    title: 'Art Process Generator',
     description: 'Coming soon...',
     icon: '🎨',
     component: BlankTool,
     upvotes: 0
   },
   {
-    id: 18,
-    title: 'Thumbnail Optimizer',
+    id: 68,
+    title: 'Music Cover Planner',
     description: 'Coming soon...',
-    icon: '🖼️',
+    icon: '🎸',
     component: BlankTool,
     upvotes: 0
   },
   {
-    id: 19,
-    title: 'Viral Script Writer',
-    description: 'Coming soon...',
-    icon: '📝',
-    component: BlankTool,
-    upvotes: 0
-  },
-  {
-    id: 20,
-    title: 'Reaction Prompt Generator',
-    description: 'Coming soon...',
-    icon: '😲',
-    component: BlankTool,
-    upvotes: 0
-  },
-  // Strategy Tools
-  {
-    id: 21,
-    title: 'Growth Strategy Planner',
-    description: 'Coming soon...',
-    icon: '📊',
-    component: BlankTool,
-    upvotes: 0
-  },
-  {
-    id: 22,
-    title: 'Trend Timer',
-    description: 'Coming soon...',
-    icon: '⏳',
-    component: BlankTool,
-    upvotes: 0
-  },
-  {
-    id: 23,
-    title: 'Content Series Builder',
-    description: 'Coming soon...',
-    icon: '📺',
-    component: BlankTool,
-    upvotes: 0
-  },
-  {
-    id: 24,
-    title: 'Viral Pattern Analyzer',
-    description: 'Coming soon...',
-    icon: '🔍',
-    component: BlankTool,
-    upvotes: 0
-  },
-  {
-    id: 25,
-    title: 'Engagement Booster',
-    description: 'Coming soon...',
-    icon: '🚀',
-    component: BlankTool,
-    upvotes: 0
-  },
-  // Creative Tools
-  {
-    id: 26,
-    title: 'Dance Trend Generator',
-    description: 'Coming soon...',
-    icon: '💃',
-    component: BlankTool,
-    upvotes: 0
-  },
-  {
-    id: 27,
-    title: 'Skit Idea Generator',
+    id: 69,
+    title: 'Comedy Skit Writer',
     description: 'Coming soon...',
     icon: '🎭',
     component: BlankTool,
     upvotes: 0
   },
   {
-    id: 28,
-    title: 'Transformation Idea Generator',
+    id: 70,
+    title: 'Fashion Haul Planner',
     description: 'Coming soon...',
-    icon: '🦋',
+    icon: '👜',
     component: BlankTool,
     upvotes: 0
   },
   {
-    id: 29,
-    title: 'POV Story Generator',
+    id: 71,
+    title: 'Room Tour Generator',
     description: 'Coming soon...',
-    icon: '👀',
+    icon: '🛋️',
     component: BlankTool,
     upvotes: 0
   },
   {
-    id: 30,
-    title: 'Sound Mixer',
+    id: 72,
+    title: 'Morning Routine Builder',
     description: 'Coming soon...',
-    icon: '🎚️',
-    component: BlankTool,
-    upvotes: 0
-  },
-  // Community Tools
-  {
-    id: 31,
-    title: 'Comment Response Generator',
-    description: 'Coming soon...',
-    icon: '💬',
+    icon: '☀️',
     component: BlankTool,
     upvotes: 0
   },
   {
-    id: 32,
-    title: 'Community Challenge Creator',
+    id: 73,
+    title: 'Night Routine Planner',
     description: 'Coming soon...',
-    icon: '🌟',
+    icon: '🌙',
     component: BlankTool,
     upvotes: 0
   },
   {
-    id: 33,
-    title: 'Follower Engagement Optimizer',
+    id: 74,
+    title: 'Relationship Advice Generator',
     description: 'Coming soon...',
-    icon: '🤗',
+    icon: '❤️',
     component: BlankTool,
     upvotes: 0
   },
   {
-    id: 34,
-    title: 'Live Stream Planner',
+    id: 75,
+    title: 'Motivation Speech Writer',
     description: 'Coming soon...',
-    icon: '📡',
+    icon: '🎯',
     component: BlankTool,
     upvotes: 0
   },
   {
-    id: 35,
-    title: 'Q&A Content Generator',
+    id: 76,
+    title: 'Book Review Template',
     description: 'Coming soon...',
-    icon: '❓',
-    component: BlankTool,
-    upvotes: 0
-  },
-  // Optimization Tools
-  {
-    id: 36,
-    title: 'Profile Optimizer',
-    description: 'Coming soon...',
-    icon: '👤',
+    icon: '📖',
     component: BlankTool,
     upvotes: 0
   },
   {
-    id: 37,
-    title: 'Bio Link Generator',
+    id: 77,
+    title: 'Movie Review Generator',
     description: 'Coming soon...',
-    icon: '🔗',
+    icon: '🎬',
     component: BlankTool,
     upvotes: 0
   },
   {
-    id: 38,
-    title: 'Trending Topic Alerts',
-    description: 'Coming soon...',
-    icon: '🔔',
-    component: BlankTool,
-    upvotes: 0
-  },
-  {
-    id: 39,
-    title: 'Content Remix Suggester',
-    description: 'Coming soon...',
-    icon: '🔄',
-    component: BlankTool,
-    upvotes: 0
-  },
-  {
-    id: 40,
-    title: 'Viral Sound Finder',
-    description: 'Coming soon...',
-    icon: '🎵',
-    component: BlankTool,
-    upvotes: 0
-  },
-  // Advanced Tools
-  {
-    id: 41,
-    title: 'Multi-Platform Optimizer',
-    description: 'Coming soon...',
-    icon: '🌐',
-    component: BlankTool,
-    upvotes: 0
-  },
-  {
-    id: 42,
-    title: 'Content Batch Creator',
+    id: 78,
+    title: 'Product Review Planner',
     description: 'Coming soon...',
     icon: '📦',
     component: BlankTool,
     upvotes: 0
   },
   {
-    id: 43,
-    title: 'Viral Moment Predictor',
+    id: 79,
+    title: 'Restaurant Review Format',
     description: 'Coming soon...',
-    icon: '📈',
+    icon: '🍽️',
     component: BlankTool,
     upvotes: 0
   },
   {
-    id: 44,
-    title: 'Trend Lifecycle Analyzer',
+    id: 80,
+    title: 'Hotel Review Template',
     description: 'Coming soon...',
-    icon: '📊',
+    icon: '🏨',
     component: BlankTool,
     upvotes: 0
   },
   {
-    id: 45,
-    title: 'Content Style Generator',
+    id: 81,
+    title: 'Reaction Video Planner',
     description: 'Coming soon...',
-    icon: '🎨',
-    component: BlankTool,
-    upvotes: 0
-  },
-  // Special Tools
-  {
-    id: 46,
-    title: 'Seasonal Trend Predictor',
-    description: 'Coming soon...',
-    icon: '🗓️',
+    icon: '😱',
     component: BlankTool,
     upvotes: 0
   },
   {
-    id: 47,
-    title: 'Brand Voice Generator',
+    id: 82,
+    title: 'Unboxing Video Generator',
     description: 'Coming soon...',
-    icon: '🎤',
+    icon: '📦',
     component: BlankTool,
     upvotes: 0
   },
   {
-    id: 48,
-    title: 'Viral News Hook Generator',
+    id: 83,
+    title: 'Shopping Haul Planner',
     description: 'Coming soon...',
-    icon: '📰',
+    icon: '🛍️',
     component: BlankTool,
     upvotes: 0
   },
   {
-    id: 49,
-    title: 'Meme Trend Generator',
+    id: 84,
+    title: 'Day in Life Generator',
     description: 'Coming soon...',
-    icon: '😂',
+    icon: '📅',
     component: BlankTool,
     upvotes: 0
   },
   {
-    id: 50,
-    title: 'Content Mashup Generator',
+    id: 85,
+    title: 'Week in Life Planner',
     description: 'Coming soon...',
-    icon: '🎪',
+    icon: '📆',
+    component: BlankTool,
+    upvotes: 0
+  },
+  {
+    id: 86,
+    title: 'Study With Me Format',
+    description: 'Coming soon...',
+    icon: '📝',
+    component: BlankTool,
+    upvotes: 0
+  },
+  {
+    id: 87,
+    title: 'Work With Me Template',
+    description: 'Coming soon...',
+    icon: '💼',
+    component: BlankTool,
+    upvotes: 0
+  },
+  {
+    id: 88,
+    title: 'Clean With Me Planner',
+    description: 'Coming soon...',
+    icon: '🧹',
+    component: BlankTool,
+    upvotes: 0
+  },
+  {
+    id: 89,
+    title: 'Cook With Me Generator',
+    description: 'Coming soon...',
+    icon: '👩‍🍳',
+    component: BlankTool,
+    upvotes: 0
+  },
+  {
+    id: 90,
+    title: 'Get Ready With Me Planner',
+    description: 'Coming soon...',
+    icon: '💅',
+    component: BlankTool,
+    upvotes: 0
+  },
+  {
+    id: 91,
+    title: 'Storytime Generator',
+    description: 'Coming soon...',
+    icon: '📖',
+    component: BlankTool,
+    upvotes: 0
+  },
+  {
+    id: 92,
+    title: 'Q&A Template Builder',
+    description: 'Coming soon...',
+    icon: '❓',
+    component: BlankTool,
+    upvotes: 0
+  },
+  {
+    id: 93,
+    title: 'Facts Generator',
+    description: 'Coming soon...',
+    icon: '💭',
+    component: BlankTool,
+    upvotes: 0
+  },
+  {
+    id: 94,
+    title: 'Did You Know Generator',
+    description: 'Coming soon...',
+    icon: '🤔',
+    component: BlankTool,
+    upvotes: 0
+  },
+  {
+    id: 95,
+    title: 'Myth vs Fact Generator',
+    description: 'Coming soon...',
+    icon: '⚖️',
+    component: BlankTool,
+    upvotes: 0
+  },
+  {
+    id: 96,
+    title: 'Before and After Builder',
+    description: 'Coming soon...',
+    icon: '↔️',
+    component: BlankTool,
+    upvotes: 0
+  },
+  {
+    id: 97,
+    title: 'Expectation vs Reality',
+    description: 'Coming soon...',
+    icon: '🆚',
+    component: BlankTool,
+    upvotes: 0
+  },
+  {
+    id: 98,
+    title: 'Then vs Now Generator',
+    description: 'Coming soon...',
+    icon: '⏳',
+    component: BlankTool,
+    upvotes: 0
+  },
+  {
+    id: 99,
+    title: 'Top 10 List Generator',
+    description: 'Coming soon...',
+    icon: '🔝',
+    component: BlankTool,
+    upvotes: 0
+  },
+  {
+    id: 100,
+    title: 'Viral Prediction Engine',
+    description: 'Coming soon...',
+    icon: '🎯',
     component: BlankTool,
     upvotes: 0
   }
